@@ -23,6 +23,8 @@ override.tf.json
 *_override.tf.json
 
 appturma08
+appturma08.pub
+.terraform.lock.hcl
 
 # Include override files you do wish to add to version control using negated pattern
 #
