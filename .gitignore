@@ -6,6 +6,9 @@ vpc/.terraform/*
 *.tfstate
 *.tfstate.*
 
+app/.terraform.lock.hcl
+vpc/.terraform.lock.hcl
+app/appturma08.pub
 # Crash log files
 crash.log
 
