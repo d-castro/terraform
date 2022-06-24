@@ -48,7 +48,7 @@ resource "aws_security_group" "allow_ssh_http" {
 resource "aws_security_group" "allow_ssh_mongodb" {
   name        = format("%s-allow-mongodb", local.name)
   description = "Allow ssh and http inbound traffic"
-  vpc_id      = "vpc-0448c0bcf55aa547d"
+  vpc_id      = data.aws_vpc.vpc.id
 
   ingress = [
     {

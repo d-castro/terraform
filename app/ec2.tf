@@ -1,6 +1,6 @@
 resource "aws_instance" "app_ec2" {
   ami                           = data.aws_ami.amazon_linux.id
-  instance_type                 = "t2.micro"
+  instance_type                 = lookup(var.instance_type_app, local.env)
   subnet_id                     = data.aws_subnet.app_public_subnet.id
   associate_public_ip_address   = true
   key_name                      = aws_key_pair.app_key.id
@@ -13,7 +13,7 @@ resource "aws_instance" "app_ec2" {
 
 resource "aws_instance" "mongodb_ec2" {
   ami                           = data.aws_ami.amazon_linux.id
-  instance_type                 = "t2.micro"
+  instance_type                 = var.instance_type_mongodb
   subnet_id                     = data.aws_subnet.app_public_subnet.id
   associate_public_ip_address   = true
   key_name                      = aws_key_pair.app_key.id

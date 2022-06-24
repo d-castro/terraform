@@ -1,7 +1,7 @@
 resource "aws_route53_zone" "app_zone" {
   name = format("%s.com.br", var.project)
   vpc {
-    vpc_id = "vpc-0448c0bcf55aa547d"
+    vpc_id = data.aws_vpc.vpc.id
   }
 }
 
