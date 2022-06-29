@@ -1,5 +1,0 @@
-project = "turma-08" 
-cidr_block = "10.0.100.0/24"
-#instance_type_app = "t2.micro"
-instance_type_mongodb = "t2.small"
-vpc_name = "turma-08"

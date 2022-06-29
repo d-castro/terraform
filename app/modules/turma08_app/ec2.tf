@@ -1,10 +1,11 @@
 resource "aws_instance" "app_ec2" {
+  count                         = lookup(var.instance_count, var.env)
   ami                           = data.aws_ami.amazon_linux.id
-  instance_type                 = lookup(var.instance_type_app, local.env)
+  instance_type                 = lookup(var.instance_type_app, var.env)
   subnet_id                     = data.aws_subnet.app_public_subnet.id
   associate_public_ip_address   = true
   key_name                      = aws_key_pair.app_key.id
-  user_data                     = file("scripts/ec2.sh") 
+  user_data                     = data.template_file.ec2_app.rendered
 
   tags = {
     Name = format("%s-app", local.name)
@@ -17,7 +18,7 @@ resource "aws_instance" "mongodb_ec2" {
   subnet_id                     = data.aws_subnet.app_public_subnet.id
   associate_public_ip_address   = true
   key_name                      = aws_key_pair.app_key.id
-  user_data                     = file("scripts/mongodb.sh") 
+  user_data                     = data.template_file.ec2_mongodb.rendered
 
   tags = {
     Name = format("%s-mongodb", local.name)

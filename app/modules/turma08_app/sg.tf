@@ -79,8 +79,9 @@ resource "aws_security_group" "allow_ssh_mongodb" {
 }
 
 resource "aws_network_interface_sg_attachment" "sg_attachment_app" {
-  security_group_id    = aws_security_group.allow_ssh_http.id
-  network_interface_id = aws_instance.app_ec2.primary_network_interface_id
+  count                 = lookup(var.instance_count, var.env)
+  security_group_id     = aws_security_group.allow_ssh_http.id
+  network_interface_id  = aws_instance.app_ec2[count.index].primary_network_interface_id
 }
 
 resource "aws_network_interface_sg_attachment" "sg_attachment_mongo_db" {
