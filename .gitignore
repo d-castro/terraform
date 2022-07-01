@@ -1,6 +1,7 @@
 # Local .terraform directories
 app/.terraform/*
 vpc/.terraform/*
+app_asg/.terraform/*
 **/.vagrant/*
 # .tfstate files
 *.tfstate
@@ -24,6 +25,8 @@ override.tf.json
 
 appturma08
 appturma08.pub
+appkey
+appkey.pub
 .terraform.lock.hcl
 
 # Include override files you do wish to add to version control using negated pattern
