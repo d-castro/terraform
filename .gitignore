@@ -1,7 +1,5 @@
 # Local .terraform directories
-app/.terraform/*
-vpc/.terraform/*
-app_asg/.terraform/*
+**/**/.terraform/*
 **/.vagrant/*
 # .tfstate files
 *.tfstate
